@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Video Detection - FFT Fingerprinting</title>
+    <meta name="description" content="Detect AI-generated videos using advanced FFT fingerprinting technology">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content fade-in">
+                <h1>?? AI Video Detection</h1>
+                <p class="subtitle">
+                    Advanced FFT fingerprinting technology to detect AI-generated videos by analyzing frequency domain patterns
+                </p>
+            </div>
+        </header>
+
+        <!-- Upload Section with Tabs -->
+        <section class="upload-section fade-in">
+            <div class="glass-card">
+                <!-- Tab Headers -->
+                <div class="upload-tabs">
+                    <button class="tab-btn active" data-tab="file">
+                        ?? Upload File
+                    </button>
+                    <button class="tab-btn" data-tab="youtube">
+                        ?? YouTube Link
+                    </button>
+                </div>
+
+                <!-- File Upload Tab -->
+                <div class="tab-content active" id="fileTab">
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon">??</div>
+                        <div class="upload-text">
+                            <h3>Upload Video for Analysis</h3>
+                            <p>Drag and drop a video file here, or click to browse</p>
+                            <p class="mt-sm" style="font-size: 0.75rem; color: var(--color-text-muted);">
+                                Supported formats: MP4, WebM, MOV � Max size: 3GB
+                            </p>
+                        </div>
+                        <input type="file" id="fileInput" accept="video/*">
+                    </div>
+                </div>
+
+                <!-- YouTube Link Tab -->
+                <div class="tab-content" id="youtubeTab">
+                    <div class="youtube-input-container">
+                        <div class="youtube-icon">??</div>
+                        <h3>Analyze YouTube Video</h3>
+                        <p class="mb-md" style="color: var(--color-text-secondary);">
+                            Paste a YouTube video URL to analyze it for AI generation
+                        </p>
+                        
+                        <div class="url-input-group">
+                            <input type="text" id="youtubeUrlInput" class="youtube-url-input" placeholder="https://www.youtube.com/watch?v=...">
+                            <button class="btn btn-primary" id="loadYoutubeBtn">
+                                Load Video
+                            </button>
+                        </div>
+
+                        <div class="youtube-help">
+                            <p style="font-size: 0.75rem; color: var(--color-text-muted);">
+                                <strong>Supported formats:</strong><br>
+                                � https://www.youtube.com/watch?v=VIDEO_ID<br>
+                                � https://youtu.be/VIDEO_ID<br>
+                                � https://www.youtube.com/embed/VIDEO_ID
+                            </p>
+                        </div>
+
+                        <div class="youtube-notice mt-md">
+                            <p style="font-size: 0.875rem; color: var(--color-text-muted);">
+                                ?? <strong>Note:</strong> Some YouTube videos may have embedding restrictions. 
+                                If the video cannot be loaded, you'll be guided to download it manually.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Analysis Grid -->
+        <div class="main-grid">
+            <!-- Video Player Section -->
+            <section class="video-section hidden" id="videoSection">
+                <div class="glass-card">
+                    <h2>?? Video Preview</h2>
+                    <div class="video-container">
+                        <video id="videoPlayer" controls></video>
+                        <div id="youtubePlayerContainer" class="hidden"></div>
+                    </div>
+                    <div class="video-controls">
+                        <button class="btn btn-primary" id="analyzeBtn">
+                            ?? Analyze Video
+                        </button>
+                        <button class="btn btn-secondary" id="resetBtn">
+                            ?? Upload New Video
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FFT Visualization Section -->
+            <section class="fft-section hidden" id="fftSection">
+                <div class="glass-card">
+                    <h2>?? FFT Frequency Spectrum</h2>
+                    <div class="fft-canvas-container">
+                        <canvas id="fftCanvas"></canvas>
+                        <div class="loading-overlay hidden" id="fftLoading">
+                            <div class="spinner"></div>
+                            <div class="loading-text">Analyzing frequency patterns...</div>
+                            <div class="progress-container">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" id="progressFill"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fft-legend">
+                        <h4>How to Read This</h4>
+                        <p><strong>Real Video:</strong> Cloudy nebula pattern, smooth gradients</p>
+                        <p><strong>AI Generated:</strong> Grid lines, bright dots, cross/plus shapes</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section hidden" id="resultsSection">
+            <div class="glass-card result-card">
+                <h2>?? Detection Results</h2>
+
+                <div class="result-badge" id="resultBadge">
+                    AI Generated
+                </div>
+
+                <div class="confidence-meter">
+                    <div class="confidence-label">
+                        <span>Confidence Level</span>
+                        <span id="confidenceValue">0%</span>
+                    </div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill"></div>
+                    </div>
+                </div>
+
+                <div class="result-explanation">
+                    <h4>?? Analysis Details</h4>
+                    <ul id="detectionDetails">
+                        <li>Analyzing frequency patterns...</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Educational Info -->
+        <section class="fade-in mt-lg">
+            <div class="glass-card">
+                <h3>?? How It Works</h3>
+                <div class="result-explanation">
+                    <p><strong>FFT Fingerprinting</strong> analyzes the frequency domain of video frames to detect artifacts left by AI generation models.</p>
+
+                    <h4 class="mt-md">Real Camera Footage</h4>
+                    <ul>
+                        <li>Natural, chaotic frequency distribution</li>
+                        <li>Smooth gradients in the spectrum</li>
+                        <li>No geometric patterns</li>
+                    </ul>
+
+                    <h4 class="mt-md">AI-Generated Videos (GANs/Diffusion)</h4>
+                    <ul>
+                        <li>Distinct grid patterns from CNN upsampling</li>
+                        <li>Bright dots at regular intervals</li>
+                        <li>Cross or plus-shaped artifacts</li>
+                        <li>Checkerboard effects in high frequencies</li>
+                    </ul>
+
+                    <p class="mt-md" style="color: var(--color-text-muted); font-size: 0.875rem;">
+                        This technique uses High-Pass Filtering (HPF) to isolate texture details where AI artifacts are most visible.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="fft-analyzer.js"></script>
+    <script src="visualization.js"></script>
+    <script src="youtube-handler.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

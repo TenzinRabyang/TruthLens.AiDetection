@@ -1,0 +1,346 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>TruthLens - AI Video Detection & Deepfake Detector | Free Online Tool</title>
+    <meta name="title" content="TruthLens - AI Video Detection & Deepfake Detector">
+    <meta name="description"
+        content="Detect AI-generated videos instantly with TruthLens. Free FFT-based analysis to verify video authenticity. Upload files up to 3GB or check YouTube links.">
+    <meta name="keywords"
+        content="AI video detection, deepfake detector, video verification, FFT analysis, AI content detection">
+    <meta name="author" content="TruthLens">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TruthLens - AI Video Detection">
+    <meta property="og:description" content="Detect AI-generated videos instantly with advanced FFT fingerprinting">
+    <meta property="og:image" content="og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo-icon">🔬</div>
+                <span class="logo-text">TruthLens</span>
+            </div>
+            <div class="nav-tagline">See Through AI-Generated Videos</div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="gradient-text">Detect AI Videos</span>
+                    <span class="hero-subtitle">Instantly</span>
+                </h1>
+                <p class="hero-description">
+                    Advanced FFT fingerprinting technology to verify video authenticity and detect deepfakes
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">3GB</div>
+                        <div class="stat-label">Max File Size</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Client-Side</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">Free</div>
+                        <div class="stat-label">Forever</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="glass-card upload-card">
+                <!-- Tab Headers -->
+                <div class="upload-tabs">
+                    <button class="tab-btn active" data-tab="file">
+                        <span class="tab-icon">📁</span>
+                        <span class="tab-text">Upload File</span>
+                    </button>
+                    <button class="tab-btn" data-tab="youtube">
+                        <span class="tab-icon">🎬</span>
+                        <span class="tab-text">YouTube Link</span>
+                    </button>
+                </div>
+
+                <!-- File Upload Tab -->
+                <div class="tab-content active" id="fileTab">
+                    <div class="upload-zone" id="uploadZone">
+                        <div class="upload-icon-wrapper">
+                            <div class="upload-icon">📹</div>
+                            <div class="upload-pulse"></div>
+                        </div>
+                        <h3 class="upload-title">Drop Your Video Here</h3>
+                        <p class="upload-description">or click to browse your files</p>
+                        <div class="upload-specs">
+                            <span class="spec-item">MP4, WebM, MOV</span>
+                            <span class="spec-divider">•</span>
+                            <span class="spec-item">Up to 3GB</span>
+                        </div>
+                        <input type="file" id="fileInput" accept="video/*">
+                    </div>
+                </div>
+
+                <!-- YouTube Link Tab -->
+                <div class="tab-content" id="youtubeTab">
+                    <div class="youtube-input-container">
+                        <div class="youtube-icon-wrapper">
+                            <span class="youtube-icon">🎬</span>
+                        </div>
+                        <h3 class="youtube-title">Analyze YouTube Video</h3>
+                        <p class="youtube-description">Paste any YouTube URL to check for AI generation</p>
+
+                        <div class="url-input-group">
+                            <input type="text" id="youtubeUrlInput" class="youtube-url-input"
+                                placeholder="https://www.youtube.com/watch?v=...">
+                            <button class="btn btn-primary" id="loadYoutubeBtn">
+                                <span>Load Video</span>
+                            </button>
+                        </div>
+
+                        <div class="youtube-info">
+                            <div class="info-box">
+                                <div class="info-title">✓ Supported Formats</div>
+                                <div class="info-list">
+                                    <div>youtube.com/watch?v=...</div>
+                                    <div>youtu.be/...</div>
+                                    <div>youtube.com/embed/...</div>
+                                </div>
+                            </div>
+                            <div class="info-box warning">
+                                <div class="info-title">⚠️ Note</div>
+                                <div class="info-text">Some videos may have embedding restrictions. We'll guide you
+                                    through manual download if needed.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Player Section -->
+        <section class="video-section hidden" id="videoSection">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-icon">📺</span>
+                        Video Preview
+                    </h2>
+                </div>
+                <div class="video-container">
+                    <video id="videoPlayer" controls></video>
+                    <div id="youtubePlayerContainer" class="hidden"></div>
+                </div>
+                <div class="video-controls">
+                    <button class="btn btn-primary btn-large" id="analyzeBtn">
+                        <span class="btn-icon">🔍</span>
+                        <span>Analyze Video</span>
+                    </button>
+                    <button class="btn btn-secondary" id="resetBtn">
+                        <span class="btn-icon">🔄</span>
+                        <span>Upload New</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- FFT Visualization Section -->
+        <section class="fft-section hidden" id="fftSection">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-icon">📊</span>
+                        FFT Frequency Spectrum
+                    </h2>
+                </div>
+                <div class="fft-canvas-container">
+                    <canvas id="fftCanvas"></canvas>
+                    <div class="loading-overlay hidden" id="fftLoading">
+                        <div class="spinner-wrapper">
+                            <div class="spinner"></div>
+                            <div class="spinner-glow"></div>
+                        </div>
+                        <div class="loading-text">Analyzing frequency patterns...</div>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progressFill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fft-legend">
+                    <div class="legend-item real">
+                        <div class="legend-indicator"></div>
+                        <div class="legend-text">
+                            <strong>Real Video:</strong> Cloudy nebula, smooth gradients
+                        </div>
+                    </div>
+                    <div class="legend-item ai">
+                        <div class="legend-indicator"></div>
+                        <div class="legend-text">
+                            <strong>AI Generated:</strong> Grid lines, bright dots, cross patterns
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section hidden" id="resultsSection">
+            <div class="glass-card result-card">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-icon">🎯</span>
+                        Detection Results
+                    </h2>
+                </div>
+
+                <div class="result-badge-wrapper">
+                    <div class="result-badge" id="resultBadge">AI Generated</div>
+                </div>
+
+                <div class="confidence-meter">
+                    <div class="confidence-label">
+                        <span>Confidence Level</span>
+                        <span id="confidenceValue" class="confidence-number">0%</span>
+                    </div>
+                    <div class="confidence-bar">
+                        <div class="confidence-fill" id="confidenceFill"></div>
+                        <div class="confidence-glow"></div>
+                    </div>
+                </div>
+
+                <div class="result-explanation">
+                    <h4 class="explanation-title">
+                        <span>📋</span>
+                        Analysis Details
+                    </h4>
+                    <ul id="detectionDetails" class="details-list">
+                        <li>Analyzing frequency patterns...</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="info-section">
+            <div class="glass-card">
+                <div class="section-header">
+                    <h2 class="section-title">
+                        <span class="title-icon">💡</span>
+                        How It Works
+                    </h2>
+                </div>
+                <div class="info-content">
+                    <p class="info-intro">
+                        <strong>FFT Fingerprinting</strong> analyzes the frequency domain of video frames to detect
+                        artifacts left by AI generation models.
+                    </p>
+
+                    <div class="info-grid">
+                        <div class="info-card real-card">
+                            <div class="info-card-icon">✓</div>
+                            <h4>Real Camera Footage</h4>
+                            <ul>
+                                <li>Natural, chaotic frequency distribution</li>
+                                <li>Smooth gradients in the spectrum</li>
+                                <li>No geometric patterns</li>
+                            </ul>
+                        </div>
+
+                        <div class="info-card ai-card">
+                            <div class="info-card-icon">⚠</div>
+                            <h4>AI-Generated Videos</h4>
+                            <ul>
+                                <li>Distinct grid patterns from CNN upsampling</li>
+                                <li>Bright dots at regular intervals</li>
+                                <li>Cross or plus-shaped artifacts</li>
+                                <li>Checkerboard effects in high frequencies</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <p class="info-note">
+                        This technique uses High-Pass Filtering (HPF) to isolate texture details where AI artifacts are
+                        most visible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-icon">🔬</span>
+                    <span class="logo-text">TruthLens</span>
+                </div>
+                <div class="footer-text">
+                    100% Client-Side • Privacy-First • Open Source
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "TruthLens",
+      "description": "AI video detection and deepfake detector using FFT fingerprinting",
+      "url": "https://truthlens.ai",
+      "applicationCategory": "SecurityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <!-- Scripts -->
+    <script src="utils.js"></script>
+    <script src="fft-analyzer.js"></script>
+    <script src="visualization.js"></script>
+    <script src="youtube-handler.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

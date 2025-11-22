@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://truthlens.ai/sitemap.xml
+
+# Disallow crawling of any potential future admin or API endpoints
+Disallow: /api/
+Disallow: /admin/
